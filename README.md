@@ -25,3 +25,41 @@ and solve it as we did in the lectures. Give the final $\Theta$ complexity.
 
 Describe your reasoning and the conclusion you've come to. Your reasoning is the
 most important part. Add your answer to this markdown file.
+
+-----------------------------
+
+This can be split up into multiple parts using T(n) where n is the size of the array, when n is less than or equal to 2 and when it's greater than 2.
+When it is less than or equal to 2 it is constant since it will return 0, the first element, or the just the first and second added together.
+However when n is greater than 2 it needs to split into 3 parts which is done at the same time everytime plus the recursive calls, since it is 3 recursive calls in 3 parts it can be represented with 3T(n/3) where it's 3T(n) for the calls, and (n/3) for the 3 parts.
+
+This gives us an equation of T(n) = 3T(n/3) + n
+
+Then we can use T(n/3) = 3T(n/9) + n/3
+
+And T(n) = 3(3T(n/9) + n/3) + n = 9T(n/9) + n + n = 9T(n/9) + 2n
+
+Which forms a pattern where $3^iT(\frac{n}{3^i}) + in$
+
+Where as i $\rightarrow \infty$, $\frac{n}{3^i} = 1$ and n = $3^i$
+
+Using the logarithm rules; n = $3^i$ = $log{_3}{n} = i$
+
+So T(n) = $3^{log{_3}{n}}T(1) + nlog{_3}{n}$
+
+Using more log rules we get; T(n) = $nT(1) + nlog{n}$
+
+And using the largest part of the equation we can form a bound that dictates the behavior with $\Theta(nlog{n})$
+
+I'm also sourcing Ali because I had gotten stuck at the beginning of the manipulation and he got me going again in the lab.
+I did also use some pre-existing Stack Overflow pages for help on the markdown code.
+
+
+I certify that I have listed all sources used to complete this exercise, including the use of any Large Language Models. All of the work is my own, except where stated otherwise. I am aware that plagiarism carries severe penalties and that if plagiarism is suspected, charges may be filed against me without prior notice.
+
+
+
+
+
+
+
+
